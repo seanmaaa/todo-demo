@@ -1,0 +1,31 @@
+### 아이템 목록 목록 조회
+GET {{host}}/todo-api/v1/boards/{{사용자ID}}/{{보드ID}}/items
+
+### 아이템 등록
+POST {{host}}/todo-api/v1/boards/{{사용자ID}}/{{보드ID}}/items
+Content-Type: application/json
+
+{
+  "description": "장보기-1"
+}
+
+> {%
+    client.global.set("아이템ID", response.body.item_id)
+%}
+
+
+### 아이템 수정
+PUT {{host}}/todo-api/v1/boards/{{사용자ID}}/{{보드ID}}/items/{{아이템ID}}
+Content-Type: application/json
+
+{
+  "completed": true
+}
+
+
+### 아이템 삭제
+DELETE {{host}}/todo-api/v1/boards/{{사용자ID}}/{{보드ID}}/items/{{아이템ID}}
+
+> {%
+    client.global.clear("아이템ID")
+%}

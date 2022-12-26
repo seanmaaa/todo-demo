@@ -1,0 +1,31 @@
+### 보드 목록 조회
+GET {{host}}/todo-api/v1/boards/{{사용자ID}}
+
+### 보드 등록
+POST {{host}}/todo-api/v1/boards/{{사용자ID}}
+Content-Type: application/json
+
+{
+  "board_name": "Todo보드-1"
+}
+
+> {%
+    client.global.set("보드ID", response.body.board_id)
+%}
+
+
+### 보드 수정
+PUT {{host}}/todo-api/v1/boards/{{사용자ID}}/{{보드ID}}
+Content-Type: application/json
+
+{
+  "board_name": "Todo보드-2"
+}
+
+
+### 보드 삭제
+DELETE {{host}}/todo-api/v1/boards/{{사용자ID}}/{{보드ID}}
+
+> {%
+    client.global.clear("보드ID")
+%}

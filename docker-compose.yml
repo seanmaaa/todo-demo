@@ -1,0 +1,28 @@
+version: '3'
+services:
+  todo-api:
+    container_name: todo-api
+    image: kcdhbp/todoapi:latest
+    environment:
+      - "SPRING_PROFILES_ACTIVE=local"
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    volumes:
+      - "/Users/Shared/postgresql/data:/var/lib/postgresql/data"
+      - "./src/main/resources/sql/:/docker-entrypoint-initdb.d/"
+    environment:
+      - "TZ=Asia/Seoul"
+      - "POSTGRES_USER=todo"
+      - "POSTGRES_PASSWORD=todo"
+    ports:
+      - "5432:5432"
+    networks:
+      - default

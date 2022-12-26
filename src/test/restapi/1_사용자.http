@@ -1,0 +1,19 @@
+### 사용자 등록
+POST {{host}}/todo-api/v1/users
+Content-Type: application/json
+
+{
+  "user_name": "승현"
+}
+
+> {%
+    client.global.set("사용자ID", response.body.user_id)
+%}
+
+### 사용자 삭제
+DELETE {{host}}/todo-api/v1/users/{{사용자ID}}
+Content-Type: application/json
+
+> {%
+    client.global.clear("사용자ID")
+%}
