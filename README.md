@@ -2,8 +2,9 @@
 
 ### 개발환경
 
-- mac OS ventura v13.0.1
-- openjdk version 17.0.1
+- Mac OS ventura v13.0.1 (Apple M1, 2022 Air)
+- IntelliJ Ultimate 2022.3.1
+- Openjdk version 17.0.1
 - PostgreSQL 14.1
 
 ### Docker 이미지 생성 (로컬)
