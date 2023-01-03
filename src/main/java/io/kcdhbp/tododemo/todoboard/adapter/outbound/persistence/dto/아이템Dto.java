@@ -9,7 +9,6 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import static java.util.Objects.isNull;
 
@@ -18,14 +17,14 @@ import static java.util.Objects.isNull;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "todo_items")
 @Entity
-public class 아이템Dto implements Persistable<UUID> {
+public class 아이템Dto implements Persistable<Integer> {
   @Id
   @GeneratedValue
   @Column(name = "item_id", updatable = false)
-  private UUID id;
+  private Integer id;
 
   @Column(name = "board_id", updatable = false, nullable = false)
-  private UUID 보드Id;
+  private Integer 보드Id;
 
   @Column(name = "description", updatable = false, nullable = false)
   private String 설명;

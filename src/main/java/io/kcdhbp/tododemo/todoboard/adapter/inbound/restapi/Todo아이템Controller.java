@@ -28,27 +28,27 @@ public class Todo아이템Controller {
   private final 아이템삭제InboundPort 아이템삭제;
 
   @GetMapping("{사용자ID}/{보드ID}/items")
-  List<아이템ViewModel> 전체조회(@PathVariable final UUID 사용자ID, @PathVariable final UUID 보드ID) {
+  List<아이템ViewModel> 전체조회(@PathVariable final UUID 사용자ID, @PathVariable final Integer 보드ID) {
     final var 아이템목록 = 아이템조회.전체조회(new 사용자ID(사용자ID), new Todo보드ID(보드ID));
     return 아이템목록.stream().map(아이템ViewModel::of).toList();
   }
 
   @PostMapping("{사용자ID}/{보드ID}/items")
   @ResponseStatus(HttpStatus.CREATED)
-  아이템ViewModel 등록(@PathVariable final UUID 사용자ID, @PathVariable final UUID 보드ID, @RequestBody final 아이템생성Command command) {
+  아이템ViewModel 등록(@PathVariable final UUID 사용자ID, @PathVariable final Integer 보드ID, @RequestBody final 아이템생성Command command) {
     final var 아이템 = 아이템생성.추가(new 사용자ID(사용자ID), new Todo보드ID(보드ID), command.description());
     return 아이템ViewModel.of(아이템);
   }
 
   @PutMapping("{사용자ID}/{보드ID}/items/{아이템ID}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  void 수정(@PathVariable final UUID 사용자ID, @PathVariable final UUID 보드ID, @PathVariable final UUID 아이템ID, @RequestBody final 아이템수정Command command) {
+  void 수정(@PathVariable final UUID 사용자ID, @PathVariable final Integer 보드ID, @PathVariable final Integer 아이템ID, @RequestBody final 아이템수정Command command) {
     아이템수정.수정(new 사용자ID(사용자ID), new Todo보드ID(보드ID), new 아이템ID(아이템ID), command.completed());
   }
 
   @DeleteMapping("{사용자ID}/{보드ID}/items/{아이템ID}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  void 삭제(@PathVariable final UUID 사용자ID, @PathVariable final UUID 보드ID, @PathVariable final UUID 아이템ID) {
+  void 삭제(@PathVariable final UUID 사용자ID, @PathVariable final Integer 보드ID, @PathVariable final Integer 아이템ID) {
     아이템삭제.삭제(new 사용자ID(사용자ID), new Todo보드ID(보드ID), new 아이템ID(아이템ID));
   }
 }

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface Todo보드Dao extends JpaRepository<Todo보드Dto, UUID> {
+public interface Todo보드Dao extends JpaRepository<Todo보드Dto, Integer> {
 
-  Optional<Todo보드Dto> findByIdAnd소유자(UUID id, UUID 소유자);
+  Optional<Todo보드Dto> findByIdAnd소유자(Integer id, UUID 소유자);
 
   List<Todo보드Dto> findAllBy소유자(UUID 소유자);
 

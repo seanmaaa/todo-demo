@@ -41,13 +41,13 @@ public class Todo보드Controller {
 
   @PutMapping("{사용자ID}/{보드ID}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  void 수정(@PathVariable final UUID 사용자ID, @PathVariable final UUID 보드ID, @RequestBody final Todo보드수정Command command) {
+  void 수정(@PathVariable final UUID 사용자ID, @PathVariable final Integer 보드ID, @RequestBody final Todo보드수정Command command) {
     보드수정.수정(new 사용자ID(사용자ID), new Todo보드ID(보드ID), command.board_name());
   }
 
   @DeleteMapping("{사용자ID}/{보드ID}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  void 삭제(@PathVariable final UUID 사용자ID, @PathVariable final UUID 보드ID) {
+  void 삭제(@PathVariable final UUID 사용자ID, @PathVariable final Integer 보드ID) {
     보드삭제.삭제(new 사용자ID(사용자ID), new Todo보드ID(보드ID));
   }
 }

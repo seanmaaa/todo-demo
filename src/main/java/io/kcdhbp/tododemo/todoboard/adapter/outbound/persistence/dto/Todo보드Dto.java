@@ -18,12 +18,12 @@ import static java.util.Objects.isNull;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "todo_boards")
 @Entity
-public class Todo보드Dto implements Persistable<UUID> {
+public class Todo보드Dto implements Persistable<Integer> {
 
   @Id
   @GeneratedValue
   @Column(name = "board_id", updatable = false)
-  private UUID id;
+  private Integer id;
 
   @Column(name = "owner_id", updatable = false, nullable = false)
   private UUID 소유자;
