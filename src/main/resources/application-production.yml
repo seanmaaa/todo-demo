@@ -2,7 +2,7 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${TODO_DATASOURCE}}:5432/todo
+    url: jdbc:postgresql://${TODO_DATASOURCE}/todo
     username: ${TODO_USER}
     password: ${TODO_PASSWORD}
   # jpa properties

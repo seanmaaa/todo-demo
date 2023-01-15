@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: todo
+            - name: POSTGRES_PASSWORD
+              value: todo
+#          envFrom:
+#            - secretRef:
+#                name: todo-datasource-credentials
+#          volumeMounts:
+#            - mountPath: /var/lib/postgresql/data
+#              name: todo-pv
+#      volumes:
+#        - name: todo-pv
+#          persistentVolumeClaim:
+#            claimName: todo-pv-claim
