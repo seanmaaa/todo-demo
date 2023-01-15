@@ -5,11 +5,10 @@ import io.kcdhbp.tododemo.todoboard.domain.아이템;
 import lombok.NonNull;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record 아이템ViewModel(
-    UUID item_id,
+    Integer item_id,
     String description,
     Boolean completed,
     LocalDateTime created_at,

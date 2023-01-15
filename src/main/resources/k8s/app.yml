@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-api
+  template:
+    metadata:
+      name: todo-api-pod
+      labels:
+        app: todo-api
+    spec:
+      containers:
+        - name: todo-api
+          image: kcdhbp/todoapi
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+            - name: TODO_DATASOURCE
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-datasource-config
+                  key: todo_datasource
+            - name: TODO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: todo-datasource-credentials
+                  key: POSTGRES_USER
+            - name: TODO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: todo-datasource-credentials
+                  key: POSTGRES_PASSWORD
+
+
